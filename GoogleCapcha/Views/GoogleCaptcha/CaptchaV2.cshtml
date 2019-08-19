@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Captcha V2";
+    var sitekey = System.Configuration.ConfigurationManager.AppSettings["GoogleRecaptchaSiteKeyV2"];
+}
+
+<h2>Google Captcha V2</h2>
+
+<div>
+    @using (Html.BeginForm("FormSubmitV2", "GoogleCaptcha", FormMethod.Post))
+    {
+        <div class="g-recaptcha" data-sitekey=@sitekey></div>
+        <input type="submit" value="Submit"/>
+    }
+</div>
+<span stype="display:inline-block;font-size: 20px; margin:20px 0; padding:20px; border: 1px soild #D3D3D3">@ViewBag.Message</span>
+<script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script>

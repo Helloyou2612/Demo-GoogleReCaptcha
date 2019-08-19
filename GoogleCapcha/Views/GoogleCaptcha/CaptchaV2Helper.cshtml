@@ -1,0 +1,33 @@
+﻿@using GoogleCapcha.HtmlHelpers
+@{
+    ViewBag.Title = "CaptchaV2Helper";
+}
+
+<h2>CaptchaV2Helper</h2>
+<hr />
+
+@using (Html.BeginForm("CaptchaV2Helper", "GoogleCaptcha", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.Label("Title", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBox("Title", "", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.GoogleCaptcha()
+            @Html.InvalidGoogleCaptchaLabel("Captcha is not valid !")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+}  
+
